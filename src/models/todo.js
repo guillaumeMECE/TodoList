@@ -22,4 +22,4 @@ const TodoSchema = new Schema(attributes, options);
 const TodoModel = model(name, TodoSchema);
 
 
-exports = TodoModel;
+module.exports = TodoModel;
