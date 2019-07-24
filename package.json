@@ -4,7 +4,7 @@
   "description": "NODE.JS & VUE.JS APP",
   "main": "./src/server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --noStackTrace",
     "dev": "nodemon --require dotenv/config src/server.js"
   },
   "dependencies": {
