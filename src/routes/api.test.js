@@ -2,6 +2,7 @@
 
 const request = require('supertest');
 const app = require('../app');
+const TodoModel = require('../models/todo');
 
 describe('[Routes] - API', () => {
     describe('All', () => {
@@ -48,6 +49,28 @@ describe('[Routes] - API', () => {
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(400, done);
+        });
+    });
+
+    describe('delete', () => {
+        it('send with id should return status 200', async (done) => {
+            // Arrange
+            let todo;
+
+            // Act
+            try {
+                todo = await TodoModel.findOne().exec();
+            } catch (error) {
+                console.log('error findOne ', error.message);
+                console.log(error);
+            }
+
+            // Assert
+            request(app)
+                .delete(`/api/delete/${todo._id}`)
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(200, done);
         });
     });
 });
