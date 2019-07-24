@@ -4,7 +4,8 @@
   "description": "NODE.JS & VUE.JS APP",
   "main": "./src/server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon --require dotenv/config src/server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
