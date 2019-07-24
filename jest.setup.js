@@ -9,7 +9,7 @@ beforeEach(async (done) => {
     if (mongoose.connection.readyState === 0) {
         try {
             await mongoose.connect(`${mongoDbUri}/${mongoDbDatabase}`, {
-                useNewUrlParser: true
+                useNewUrlParser: true, useFindAndModify: false
             });
         } catch (error) {
             console.log('error opening db:', error);
