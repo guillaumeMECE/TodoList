@@ -20,7 +20,7 @@ const mongoDbDatabase = process.env.MONGODB_DATABASE || 'todolist';
  * Connect to MongoDB database.
  */
 
-mongoose.connect(`${mongoDbUri}/${mongoDbDatabase}`, { useNewUrlParser: true }, (err) => {
+mongoose.connect(`${mongoDbUri}/${mongoDbDatabase}`, { useNewUrlParser: true, useFindAndModify: false }, (err) => {
     if (err) {
         console.log(`Error trying to connect to db: ${mongoDbDatabase}`);
         console.log(err);
