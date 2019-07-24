@@ -73,4 +73,76 @@ describe('[Routes] - API', () => {
                 .expect(200, done);
         });
     });
+
+    describe('update', () => {
+        it('send with id should return status 200', async (done) => {
+            // Arrange
+            let todo;
+
+            // Act
+            try {
+                todo = await TodoModel.findOne().exec();
+            } catch (error) {
+                console.log('error findOne ', error.message);
+                console.log(error);
+            }
+
+            // Assert
+            request(app)
+                .patch(`/api/update/${todo._id}`)
+                .send({
+                    task: 'dev Update',
+                    done: true
+                })
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(200, done);
+        });
+    });
+    describe('update', () => {
+        it('send without id should return status 400', async (done) => {
+            // Arrange
+            let todo;
+
+            // Act
+            try {
+                todo = await TodoModel.findOne().exec();
+            } catch (error) {
+                console.log('error findOne ', error.message);
+                console.log(error);
+            }
+
+            // Assert
+            request(app)
+                .patch('/api/update/wrongid')
+                .send({
+                    task: 'dev Update',
+                    done: true
+                })
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(400, done);
+        });
+    });
+    describe('update', () => {
+        it('send without body should return status 400', async (done) => {
+            // Arrange
+            let todo;
+
+            // Act
+            try {
+                todo = await TodoModel.findOne().exec();
+            } catch (error) {
+                console.log('error findOne ', error.message);
+                console.log(error);
+            }
+
+            // Assert
+            request(app)
+                .patch(`/api/update/${todo._id}`)
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(400, done);
+        });
+    });
 });
