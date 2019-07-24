@@ -17,10 +17,11 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^6.1.0",
-    "nodemon": "^1.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.26.0",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
