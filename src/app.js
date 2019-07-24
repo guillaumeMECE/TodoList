@@ -10,8 +10,8 @@ const app = express();
 app.use(bodyParser.json());
 
 
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 
 
 
-export default app;
+exports = app;
