@@ -1,19 +1,20 @@
 module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true,
-    jest: true,
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "parser": 'babel-eslint'
   },
-  extends: 'airbnb-base',
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+  extends: [
+    "airbnb-base",
+    //'@nuxtjs',
+    'plugin:vue/recommended'
+  ],
+  "env": {
+    "node": true,
+    "jest/globals": true
   },
-  parserOptions: {
-    ecmaVersion: 2018,
-  },
-  rules: {
+  "plugins": ["jest", "vue"],
+  "rules": {
     "max-len": ["error", 1000], // Error for ligns containing too much char
     "no-console": 0,
     "padded-blocks": 0, // Allow jump a lign after function () {
@@ -26,7 +27,7 @@ module.exports = {
     "no-underscore-dangle": 0, // allow dangle to use ._id
     "arrow-body-style": 0, // Ask for {} for function with 1 statement () => { toto }
     "func-names": 0, // Anonymous function for promises then(()=>{})
-    "object-shorthand": 0,
+    // "object-shorthand": 0,
     "no-plusplus": 0,
     "no-unused-expressions": 0,
     "no-unused-vars": 0,
@@ -38,5 +39,5 @@ module.exports = {
     "quote-props": 0,
     "newline-per-chained-call": 0,
     "import/no-unresolved": 0, // to allow module-alias
-  },
+  }
 };

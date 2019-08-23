@@ -1,8 +1,8 @@
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const remove = require('./Delete');
 const TodoModel = require('../../models/todo');
+const remove = require('./Delete');
 
 dotenv.config();
 
