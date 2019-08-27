@@ -5,7 +5,7 @@ const isEmail = (email) => {
 };
 
 const isPassword = (password) => {
-    return password.length >= process.env.LENGTH_PASSWORD;
+    return password.length >= (process.env.LENGTH_PASSWORD || 8);
 };
 
 module.exports = {
