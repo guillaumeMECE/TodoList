@@ -41,7 +41,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@controllers": "./backend/controllers/index.js",
-    "@backend": "./src"
+    "@models":"./backend/models/index.js"
   },
   "repository": {
     "type": "git",

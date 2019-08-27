@@ -1,5 +1,4 @@
-
-const TodoModel = require('../../models/todo');
+const { TodoModel } = require('@models');
 
 const remove = async (req, res) => {
     try {
