@@ -11,6 +11,7 @@
     "start": "cross-env NODE_ENV=production node server/index.js"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.2",
     "cors": "^2.8.5",
@@ -40,8 +41,9 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@controllers": "./backend/controllers/index.js",
-    "@models":"./backend/models/index.js"
+    "@controllers": "./backend/controllers",
+    "@models": "./backend/models",
+    "@core": "./backend/core"
   },
   "repository": {
     "type": "git",
