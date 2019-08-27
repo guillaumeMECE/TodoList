@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt');
 const { AuthModel, UserModel } = require('@models');
 const { secureInput, formatChecker } = require('@core');
+const { AuthServices } = require('@services');
 
 /**
- * Request structure
+ * Request/Response structure
  */
-// req = { body: { email: 'xxx', firstname: 'xxx', lastname: 'xxx', password: 'xxxxxxxxx' } };
+// req = { body: { email: 'xxx', firstname: 'xxx', lastname: 'xxx', password: 'xxxxxxxxx' } }
+// res = { json: { token: 'xxxx' } }
 
 /**
  * SECURE : Params and Body
@@ -47,12 +49,14 @@ const secure = async (req) => {
 const process = async (inputs) => {
     try {
         const auth = await AuthModel.create(inputs);
-        const user = await UserModel.create(inputs);
-        delete auth.password;
-        
-        return { auth, user };
+        await UserModel.create(inputs);
+        auth.password = undefined;
+
+        const token = AuthServices.generateToken(auth);
+
+        return token;
     } catch (error) {
-        throw new Error('Auth can\'t be create');
+        throw new Error('Auth can\'t be create'.concat(' > ', error.message));
     }
 };
 
@@ -60,9 +64,9 @@ const registerUser = async (req, res) => {
     try {
         const inputs = await secure(req);
         
-        const resultsData = await process(inputs);
+        const token = await process(inputs);
 
-        res.status(200).json(resultsData);
+        res.status(200).json({ token });
     } catch (error) {
         console.log('ERROR MESSAGE :', error.message);
         console.log('ERROR :', error);

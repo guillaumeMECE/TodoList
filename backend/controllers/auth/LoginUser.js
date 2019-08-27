@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const { AuthModel, UserModel } = require('@models');
-const { secureInput, formatChecker } = require('@core');
+const { formatChecker } = require('@core');
+const { AuthServices } = require('@services');
+
 
 /**
  * Request structure
@@ -53,7 +55,9 @@ const process = async (inputs) => {
 
         auth.password = undefined;
         
-        return { auth, user };
+        const token = AuthServices.generateToken(auth);
+
+        return token;
     } catch (error) {
         throw new Error('Error login'.concat(' > ', error.message));
     }
